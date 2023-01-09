@@ -1,27 +1,31 @@
-import React from "react";
-import TodoItem from "./Todoitem"
+import React, { useState } from "react";
+import TodoItem from "./item/Todoitem"
 
-const todos = [
+const data = [
     {
        _id: '213hdss1jgjh',
        title: 'Finish the essay collaboration',
-       isCompleted: false,
+       isCompleted: true,
     },
     {
         _id: '213h1jgjkjkjhh',
        title: 'Read book',
-       isCompleted: false,
+       isCompleted: true,
     },
     {
         _id: '213h32ewqe1jgjh',
        title: 'Skip this video',
-       isCompleted: false,
+       isCompleted: true,
     },
 ]
 
 const Home = () => {
+    const [todos, setTodos] = useState(data)
+
+
     return (
-    <div className="bg-gray-900 h-screen text-white">
+    <div className='text-white w-4/5 mx-auto'>
+    <h1 className='text-2xl font-bold text-center mb-10'>To do list</h1>
     {todos.map(todo => (
        <TodoItem key={todo._id} todo={todo}/>
     ))}
