@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./item/Todoitem"
 
 
@@ -22,6 +22,17 @@ const data = [
 
 const Home = () => {
     const [todos, setTodos] = useState(data)
+
+    useEffect(()=>{
+        const localTodo = localStorage.getItem('todos') || '[]'
+        setTodos(JSON.parse(localTodo))
+      
+    }, [])
+
+    
+    useEffect(() => {
+        localStorage.setItem('todos',JSON.stringify(todos))
+    }, [todos])
 
     const changeTodo = (id) => {
         const copyTodos = [...todos]
@@ -48,8 +59,9 @@ const Home = () => {
         ])
         setTitle('')
     }
-    }
+}
 
+// console.log(todos)
 
     return (
         <div className='text-white w-4/5 mx-auto'>
