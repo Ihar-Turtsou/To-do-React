@@ -37,6 +37,7 @@ const Home = () => {
     const [title, setTitle] = useState('')
 
     const addTodo = (title) => {
+        if (title !== '') {
         setTodos([
             {
                 _id: Date.now() + Math.random() + "",
@@ -47,7 +48,7 @@ const Home = () => {
         ])
         setTitle('')
     }
-
+    }
 
 
     return (
